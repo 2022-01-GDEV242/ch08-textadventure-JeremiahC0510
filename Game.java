@@ -115,6 +115,10 @@ public class Game
                 goRoom(command);
                 break;
 
+            case LOOK:
+                look();
+                break;
+                
             case QUIT:
                 wantToQuit = quit(command);
                 break;
@@ -164,6 +168,13 @@ public class Game
         }
     }
 
+    /**WHAT I ADDED!!!!
+     * Creating a look method that is active when look command is declared.
+     */
+    private void look(){
+        System.out.println("You are " + currentRoom.getShortDescription() + " and you see" + " WILL ADD SPECIFIC DESCRIPTION VARIABLE HERE"); 
+    }
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
