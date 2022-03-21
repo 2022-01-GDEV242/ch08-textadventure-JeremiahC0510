@@ -88,13 +88,5 @@ public class Room
     {
         return exits.get(direction);
     }
-    
-    /**WHAT I ADDED!!!!
-     * I added lastRoom to be able to complete the back command.
-     */
-    public Room lastRoom(Room neighbor)
-    {
-        return neighbor;
-    }
 }
 
