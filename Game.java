@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+      
     /**
      * Create the game and initialise its internal map.
      */
@@ -167,6 +167,10 @@ public class Game
                 eat();
                 break;
                 
+            case BACK:
+                back(command);
+                break;
+                
             case QUIT:
                 wantToQuit = quit(command);
                 break;
@@ -216,6 +220,17 @@ public class Game
         }
     }
 
+    /**WHAT I ADDED!
+     * Creating a back command that brings you to the previous room you were in.
+     */
+    private void back(Command command)
+    {
+        String last = currentRoom.getShortDescription();
+        Room previousRoom = currentRoom.lastRoom(last);
+        currentRoom = previousRoom;
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     /**WHAT I ADDED!!!!
      * Creating a look method that is active when look command is declared.
      */
@@ -229,6 +244,7 @@ public class Game
     private void eat(){
         System.out.println("You have eaten now and you are not hungry any more.");
     }
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

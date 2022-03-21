@@ -59,7 +59,7 @@ public class Room
      * @return A long description of this room
      */
     public String getLongDescription()
-    {
+    { 
         return "You are " + description + ".\n" + getExitString();
     }
 
@@ -87,6 +87,14 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    /**WHAT I ADDED!!!!
+     * I added lastRoom to be able to complete the back command.
+     */
+    public Room lastRoom(Room neighbor)
+    {
+        return neighbor;
     }
 }
 
