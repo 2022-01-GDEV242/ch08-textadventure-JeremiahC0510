@@ -103,7 +103,7 @@ public class Game
         
         currentRoom = outside;  // start game outside
     }
-
+    
     /**
      *  Main play routine.  Loops until end of play.
      */
@@ -163,6 +163,10 @@ public class Game
                 look();
                 break;
                 
+            case EAT:
+                eat();
+                break;
+                
             case QUIT:
                 wantToQuit = quit(command);
                 break;
@@ -219,6 +223,12 @@ public class Game
         System.out.println("You are " + currentRoom.getShortDescription() + " and you see" + " WILL ADD SPECIFIC DESCRIPTION VARIABLE HERE"); 
     }
     
+    /**WHAT I ADDED!!!!
+     * Creating an eat method that will allow the player to eat.
+     */
+    private void eat(){
+        System.out.println("You have eaten now and you are not hungry any more.");
+    }
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
