@@ -89,6 +89,7 @@ public class Game
         
         // placing items throughout the map
         outside.setItem("hallpass", "it is colorful and attached to a keychain");
+        outside.setItem("schoolID", "you can use this school idea to enter the University");
         theater.setItem("$10", "you found this under the seats in the theater");
         lab.setItem("calculator", "this calculator has the name Paul on the back, maybe you can find him");
         hallway.setItem("glasses", "these glasses are broken");
