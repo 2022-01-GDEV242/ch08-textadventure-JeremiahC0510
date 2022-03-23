@@ -60,47 +60,40 @@ public class Game
         outside.setExit("south", lab);
         outside.setExit("west", hallway);
         outside.setExit("north", gym);
-
         theater.setExit("west", outside);
         theater.setExit("east", backstage);
-        
         backstage.setExit("west", theater);
-
         pub.setExit("east", hallway);
-
         lab.setExit("north", outside);
         lab.setExit("east", office);
-        
         office.setExit("west", lab);
         office.setExit("south", server);
-        
         server.setExit("north", office);
-        
         gym.setExit("south", outside);
         gym.setExit("east", gymOffice);
         gym.setExit("north", lockerRoom);
-        
         gymOffice.setExit("west", gym);
         gymOffice.setExit("east", equipment);
-        
         equipment.setExit("west", gymOffice);
-        
         lockerRoom.setExit("south", gym);
-        
         hallway.setExit("west", pub);
         hallway.setExit("north", cafeteria);
         hallway.setExit("east", outside);
         hallway.setExit("south", art);
-        
         cafeteria.setExit("north", nurse);
         cafeteria.setExit("west", principal);
         cafeteria.setExit("south", hallway);
-        
         principal.setExit("east", cafeteria);
-        
         nurse.setExit("south", cafeteria);
-        
         art.setExit("north", hallway);
+        
+        // placing items throughout the map
+        outside.setItem("hallpass", "it is colorful and attached to a keychain");
+        theater.setItem("$10", "you found this under the seats in the theater");
+        lab.setItem("calculator", "this calculator has the name Paul on the back, maybe you can find him");
+        hallway.setItem("glasses", "these glasses are broken");
+        cafeteria.setItem("sandwhich", "this sandwich looks yummy");
+        lockerRoom.setItem("clothes", "you see your gym clothes in your locker");
         
         currentRoom = outside;  // start game outside
     }
@@ -242,7 +235,7 @@ public class Game
      * Creating a look method that is active when look command is declared.
      */
     private void look(){
-        System.out.println("You are " + currentRoom.getShortDescription() + " and you see" + " WILL ADD SPECIFIC DESCRIPTION VARIABLE HERE"); 
+        System.out.println("You are " + currentRoom.getLongDescription()); 
     }
     
     /**WHAT I ADDED!!!!
