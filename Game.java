@@ -21,6 +21,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Room previousRoom, lastRoom;
+    private Room beamer;
     /**
      * Create the game and initialise its internal map.
      */
@@ -166,6 +167,14 @@ public class Game
                 back(command);
                 break;
                 
+            case TELEPORTER:
+                setBeamer(currentRoom);
+                break;
+                
+            case TELEPORT:
+                beam();
+                break;
+                
             case QUIT:
                 wantToQuit = quit(command);
                 break;
@@ -216,21 +225,6 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
-    /**WHAT I ADDED!
-     * Creating a back command that brings you to the previous room you were in.
-     */
-    private void back(Command command)
-    {
-        if(currentRoom != previousRoom){
-        currentRoom = previousRoom;
-        System.out.println(currentRoom.getLongDescription());
-        }
-        else{
-        currentRoom = lastRoom;
-        System.out.println(currentRoom.getLongDescription());
-        }
-    }
     
     /**WHAT I ADDED!!!!
      * Creating a look method that is active when look command is declared.
@@ -244,6 +238,42 @@ public class Game
      */
     private void eat(){
         System.out.println("You have eaten now and you are not hungry any more.");
+    }
+    
+    /**WHAT I ADDED!!!!
+     * Creating a beamer method that will allow the player to teleport.
+     */
+    private void setBeamer(Room room)
+    {
+        beamer = currentRoom;
+        System.out.println("You have set a teleporter device in this room.");
+        System.out.println("You can teleport back here using 'Teleport'");
+    }
+    private boolean beam()
+    {
+        if (beamer == null){
+            System.out.println("You have not set your teleporter. You can do so by using 'Teleporter'");
+            return false;
+        }
+        previousRoom = currentRoom;
+        currentRoom = beamer;
+        System.out.println("You have teleported! So, " + currentRoom.getLongDescription());
+        return true;
+    }
+    
+    /**WHAT I ADDED!
+     * Creating a back command that brings you to the previous room you were in.
+     */
+    private void back(Command command)
+    {
+        if(currentRoom != previousRoom){
+        currentRoom = previousRoom;
+        System.out.println(currentRoom.getLongDescription());
+        }
+        else{
+        currentRoom = lastRoom;
+        System.out.println(currentRoom.getLongDescription());
+        }
     }
     
     /** 
