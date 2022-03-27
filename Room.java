@@ -12,8 +12,8 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Jeremiah Curtis
+ * @version 3.27.22
  */
 
 public class Room 
@@ -21,6 +21,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
     private HashMap<String, Item> items;
+    private HashMap<String, NPC> npcs;
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -32,6 +33,7 @@ public class Room
         this.description = description;
         exits = new HashMap<>();
         items = new HashMap<>();
+        npcs = new HashMap<String, NPC>();
     }
 
     /**
@@ -61,7 +63,7 @@ public class Room
      */
     public String getLongDescription()
     { 
-        return "You are " + description + ".\n" + getExitString() + "\n" + getItemString();
+        return "You are " + description + ".\n" + getExitString() + "\n" + getItemString() + "\n" + getNPCString();
     }
 
     /**
@@ -90,6 +92,11 @@ public class Room
         return exits.get(direction);
     }
     
+    /**WHAT I ADDED!!!!
+     * This method is handling the creation of Items.
+     * It holds their name, description and weight and adds
+     * them to the hash map items.
+     */
     public void setItem(String name, String description)
     {
          Set<String> keys = items.keySet();
@@ -101,6 +108,11 @@ public class Room
         items.put(name, newItem);
     }
     
+    /**WHAT I ADDED!!!!
+     * This method works directly with setItem method but is
+     * primarily used when printing out the long description
+     * of what is in a Room.
+     */
     private String getItemString()
     {
         String returnString = "Items:";
@@ -113,6 +125,41 @@ public class Room
     public Item getItem(String name)
     {
         return items.get(name);
+    }
+    
+    /**WHAT I ADDED!!!!
+     * This method handles the creation of NPCs.
+     * It holds the Name and Description of each NPC.
+     * It adds these to the Hash Map npcs.
+     */
+    public void addNPC(String name, String description)
+    {
+        Set<String> keys = npcs.keySet();
+        for(String npc : keys)
+            if (npc.equals(name))
+                return;
+    
+        NPC newNPC = new NPC(name, description);
+        npcs.put(name, newNPC);
+    }
+    
+    public NPC getNPC(String name)
+    {
+        return npcs.get(name);
+    }
+    
+    /**WHAT I ADDED!!!!
+     * This method works directly with addNPC method but is
+     * primarily used when printing out the long description
+     * of what is in a Room.
+     */
+    public String getNPCString()
+    {
+        String returnString = "People:";
+        Set<String> keys = npcs.keySet();
+        for(String npc : keys)
+            returnString += " " + npc;
+        return returnString;
     }
 }
 

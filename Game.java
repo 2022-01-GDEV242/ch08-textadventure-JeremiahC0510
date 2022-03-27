@@ -97,6 +97,9 @@ public class Game
         cafeteria.setItem("sandwhich", "this sandwich looks yummy");
         lockerRoom.setItem("clothes", "you see your gym clothes in your locker");
         
+        // setting NPC spawns
+        principal.addNPC("Principal O'Neil", "The principal of the University");
+        
         currentRoom = outside;  // start game outside
     }
     
