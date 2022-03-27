@@ -122,6 +122,9 @@ public class Room
         return returnString;
     }
     
+    /**WHAT I ADDED!!!!
+     * getItem allows the player to get the name of an item.
+     */
     public Item getItem(String name)
     {
         return items.get(name);
@@ -143,6 +146,9 @@ public class Room
         npcs.put(name, newNPC);
     }
     
+    /**WHAT I ADDED!!!!
+     * getNPC allows the player to get the name of an NPC.
+     */
     public NPC getNPC(String name)
     {
         return npcs.get(name);

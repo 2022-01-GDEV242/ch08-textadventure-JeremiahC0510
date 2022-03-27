@@ -1,0 +1,15 @@
+Project: zuul-with-enums-v2
+Author: Jeremiah Curtis
+
+C: 
+Added eat command
+Streamlined available commands
+
+B:
+Added items to my Game.
+Made it so Rooms can hold multiple items.
+Implemented the back Command for one room.
+
+A:
+Added a Charged Transporter(beamer) called Teleport in my game.
+Added a non-player character.

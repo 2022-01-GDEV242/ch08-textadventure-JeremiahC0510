@@ -6,8 +6,8 @@ import java.util.Iterator;
  * There are also methods in this class that control different
  * aspects of items so you can get their name and description.
  *
- * @author (Jeremiah Curtis)
- * @version (3.18.22)
+ * @author Jeremiah Curtis
+ * @version 3.27.22
  */
 public class Item
 {

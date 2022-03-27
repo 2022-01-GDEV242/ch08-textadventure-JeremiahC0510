@@ -1,9 +1,10 @@
 
 /**
  * The starting point for the game.
+ * This allows the game to be run outside of Bluej.
  *
- * @author (Jeremiah Curtis)
- * @version (3.18.22)
+ * @author Jeremiah Curtis
+ * @version 3.27.22
  */
 public class GameMain
 {

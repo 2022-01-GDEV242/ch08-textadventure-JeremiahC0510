@@ -12,8 +12,8 @@ import java.util.ArrayList;
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Jeremiah Curtis
+ * @version 3.27.22
  */
 
 public class Game 
@@ -33,6 +33,7 @@ public class Game
 
     /**
      * Create all the rooms and link their exits together.
+     * Also, creates Items and NPCs.
      */
     private void createRooms()
     {
@@ -230,21 +231,25 @@ public class Game
     }
     
     /**WHAT I ADDED!!!!
-     * Creating a look method that is active when look command is declared.
+     * Creating a look method that reprints the room the player
+     * is in with details.
      */
     private void look(){
         System.out.println("You are " + currentRoom.getLongDescription()); 
     }
     
     /**WHAT I ADDED!!!!
-     * Creating an eat method that will allow the player to eat.
+     * Eat method that allows the player to eat.
+     * This does not affect health at this version.
      */
     private void eat(){
         System.out.println("You have eaten now and you are not hungry any more.");
     }
     
     /**WHAT I ADDED!!!!
-     * Creating a beamer method that will allow the player to teleport.
+     * setBeamer allows the player to set a teleporter in the 
+     * current room they are in. This allows the player to 
+     * teleport back whenever they want.
      */
     private void setBeamer(Room room)
     {
@@ -252,6 +257,10 @@ public class Game
         System.out.println("You have set a teleporter device in this room.");
         System.out.println("You can teleport back here using 'Teleport'");
     }
+    /**WHAT I ADDED!!!!
+     * beam is the method that handles the teleporting as long
+     * as the player set a room to teleport to.
+     */
     private boolean beam()
     {
         if (beamer == null){
@@ -265,7 +274,8 @@ public class Game
     }
     
     /**WHAT I ADDED!
-     * Creating a back command that brings you to the previous room you were in.
+     * Back command allows the player to go back to the room
+     * they were previously in.
      */
     private void back(Command command)
     {

@@ -2,8 +2,8 @@
 /**
  * This NPC class is handling the creation parameters of each NPC.
  *
- * @author (Jeremiah Curtis)
- * @version (3.27.22)
+ * @author Jeremiah Curtis
+ * @version 3.27.22
  */
 public class NPC
 {
