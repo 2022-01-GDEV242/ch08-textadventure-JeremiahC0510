@@ -22,6 +22,7 @@ public class Game
     private Room currentRoom;
     private Room previousRoom, lastRoom;
     private Room beamer;
+    private int health = 5;
     /**
      * Create the game and initialise its internal map.
      */
@@ -122,6 +123,15 @@ public class Game
         System.out.println("Thank you for playing.  Good bye.");
     }
 
+    /**WHAT I ADDED!!!!
+     * healthTracker method is used to organize and keep track
+     * of the player's health.
+     */
+    private String healthTracker(){
+        String healthString = "Health: ";
+        return healthString + health;
+    }
+    
     /**
      * Print out the opening message for the player.
      */
@@ -132,7 +142,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(currentRoom.getLongDescription() + "\n" + healthTracker());
     }
 
     /**
@@ -218,15 +228,19 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
-
+        
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
-        else {
+        else if(health <= 0){
+            System.out.println("You are too hungry to move, try eating instead");
+        }
+        else{
             previousRoom = currentRoom;
             currentRoom = nextRoom;
             lastRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            health = health - 1;
+            System.out.println(currentRoom.getLongDescription() + "\n" + healthTracker());
         }
     }
     
@@ -235,16 +249,22 @@ public class Game
      * is in with details.
      */
     private void look(){
-        System.out.println("You are " + currentRoom.getLongDescription()); 
+        System.out.println("You are " + currentRoom.getLongDescription() + "\n" + healthTracker()); 
     }
     
     /**WHAT I ADDED!!!!
      * Eat method that allows the player to eat.
-     * This does not affect health at this version.
+     * A player must eat in order to be able to move.
      */
     private void eat(){
-        System.out.println("You have eaten now and you are not hungry any more.");
-    }
+        if(health >= 0 && health <=4){
+        health++;
+        System.out.println("You have eaten, and your health has increased!" + "\n" + healthTracker());
+        }
+        else if (health >= 5){
+            System.out.println("You're health is Full!");
+        }
+    }   
     
     /**WHAT I ADDED!!!!
      * setBeamer allows the player to set a teleporter in the 
@@ -269,7 +289,7 @@ public class Game
         }
         previousRoom = currentRoom;
         currentRoom = beamer;
-        System.out.println("You have teleported! So, " + currentRoom.getLongDescription());
+        System.out.println("You have teleported! So, " + currentRoom.getLongDescription() + "\n" + healthTracker());
         return true;
     }
     
@@ -281,11 +301,11 @@ public class Game
     {
         if(currentRoom != previousRoom){
         currentRoom = previousRoom;
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(currentRoom.getLongDescription() + "\n" + healthTracker());
         }
         else{
         currentRoom = lastRoom;
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(currentRoom.getLongDescription() + "\n" + healthTracker());
         }
     }
     

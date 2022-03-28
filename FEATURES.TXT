@@ -13,3 +13,6 @@ Implemented the back Command for one room.
 A:
 Added a Charged Transporter(beamer) called Teleport in my game.
 Added a non-player character.
+Added a more complicated eat command that only allows the player 
+to move if you have at least one health. Each time the player 
+moves the player's health goes down 1.
